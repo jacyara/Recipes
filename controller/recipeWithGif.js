@@ -9,15 +9,17 @@ async function recipeWithGif(req, res) {
 
   if (ingredientsOrdered.length > 3) {
     res.status(400);
-    res.send('Bad Request! Your search can have maximum of 3 itens ');
+    res.send('Bad Request! Your search can have maximum of 3 itens');
+    return;
   }
 
   const rec = await recipesList(ingredients, res);
   const data = rec.results;
-
   const recipes = await Promise.all(recipesWithGifInfo(data, res));
 
-  return {'keywords': ingredientsOrdered, recipes};
+  res.status(200);
+  res.send({'keywords': ingredientsOrdered, recipes});
+  return;
 };
 
 exports.recipeWithGif = recipeWithGif;
