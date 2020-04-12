@@ -64,3 +64,6 @@ Exemplo rodando na porta 8000:
 Para rodar a suite de testes, executar o comando na pasta raiz do projeto:
 
 `npm test`
+_________
+
+##### * Dica: Utilizar alguma extensão de JSON Viewer para melhor visualização no navegador

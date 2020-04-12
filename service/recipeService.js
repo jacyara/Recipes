@@ -2,13 +2,13 @@ const axios = require('axios');
 const {apiKey} = require('../config');
 
 async function recipes(ingredients) {
-  let data;
+  let response;
   try {
-    data = await axios.get('http://www.recipepuppy.com/api/?i=' + ingredients + '');
+    response = await axios.get('http://www.recipepuppy.com/api/?i=' + ingredients + '');
   } catch (error) {
     throw error;
   }
-  return data.data;
+  return response.data;
 };
 
 async function giphy(recipe) {
