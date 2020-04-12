@@ -6,21 +6,20 @@ async function recipes(ingredients) {
   try {
     data = await axios.get('http://www.recipepuppy.com/api/?i=' + ingredients + '');
   } catch (error) {
-    console.error(error);
+    throw error;
   }
-  const json = JSON.stringify(data.data);
-  return json;
+  return data.data;
 };
 
 async function giphy(recipe) {
-  let data;
+  let gif;
   try {
-    data = await axios.get('http://api.giphy.com/v1/gifs/search?q=' + recipe + '&api_key=' + apiKey + '&limit=1');
+    gif = await axios.get('http://api.giphy.com/v1/gifs/search?q=' + recipe + '&api_key=' + apiKey + '&limit=1');
   } catch (error) {
-    console.error(error);
+    throw error;
   }
-  const json = JSON.stringify(data.data.data);
-  return json;
+  const giphyUrl = gif.data.data[0];
+  return giphyUrl;
 };
 
 module.exports = {
